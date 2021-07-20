@@ -39,6 +39,16 @@
             };
 
             $start = $binarySearch($array, $subArray[0]);
+
+            if(is_null($start)) {
+                return false;
+            }
+
+            // На случай дублирование стартового элемента
+            while (isset($array[$start + 1]) && $array[$start] === $array[$start + 1]) {
+                $start++;
+            }
+
             $end = count($array) - 1;
 
             foreach ($subArray as $subArrayKey => $value) {
